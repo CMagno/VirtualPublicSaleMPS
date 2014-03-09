@@ -6,6 +6,7 @@
 
 package GUI;
 
+import GUI.validations.ValidationStrategy;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -90,8 +91,11 @@ public class GUITextLine implements GUIProcedures{
             try {
                 System.out.print("Nome:");
                 nome = inReader.readLine();
-                //Valida nome
-                break;
+                if(ValidationStrategy.isValid(nome, ValidationStrategy.NAME)){
+                    break;
+                }else{
+                    this.operationFailedGUI("Nome inválido.");
+                }
             } catch (IOException ex) {
                 Logger.getLogger(GUITextLine.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -100,8 +104,11 @@ public class GUITextLine implements GUIProcedures{
             try {
                 System.out.print("CPF:");
                 cpf = inReader.readLine();
-                //Valida cpf
-                break;
+                if(ValidationStrategy.isValid(cpf, ValidationStrategy.CPF)){
+                    break;
+                }else{
+                    this.operationFailedGUI("CPF inválido.");
+                }
             } catch (IOException ex) {
                 Logger.getLogger(GUITextLine.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -126,7 +133,19 @@ public class GUITextLine implements GUIProcedures{
 
     @Override
     public long idRequestGUI(Class<?> type) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        long id = 0;
+        while(true){
+            System.out.print("Digite o ID do " + GUIProcedures.typeNameMap.get(type) + ":");
+            try {
+                id = Long.valueOf(inReader.readLine());
+                break;
+            } catch (IOException ex) {
+                Logger.getLogger(GUITextLine.class.getName()).log(Level.SEVERE, null, ex);
+            } catch(NumberFormatException e){
+                this.operationFailedGUI("ID inválido. Digite somente números.");
+            }
+        }
+        return id;
     }
 
     @Override

@@ -16,7 +16,7 @@ import logic.pojos.*;
  */
 public interface GUIProcedures {
     
-    public static final Map typeNameMap = new HashMap<Class<?>,String>(){{
+    public static final HashMap<Class<?>,String> typeNameMap = new HashMap<Class<?>,String>(){{
         put(Client.class, "Cliente");
         put(Product.class, "Produto");
         put(PublicSale.class, "Leilão");

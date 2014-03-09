@@ -20,8 +20,12 @@ public class DAOMemoryPersistence implements DAO{
     private static DAOMemoryPersistence dao;
     private static long lastId;
     private static HashMap<Long, Pojo> mapCli, mapProd, mapPSale, mapDeal;
-    private static Map<Class<?>, HashMap<Long, Pojo>> mapType = new HashMap<>();
+    private static HashMap<Class<?>, HashMap<Long, Pojo>> mapType = new HashMap<>();
     static{
+        mapCli = new HashMap<>();
+        mapProd = new HashMap<>();
+        mapPSale = new HashMap<>();
+        mapDeal = new HashMap<>();
         mapType.put(Client.class, mapCli);
         mapType.put(Product.class, mapProd);
         mapType.put(PublicSale.class, mapPSale);
@@ -29,10 +33,6 @@ public class DAOMemoryPersistence implements DAO{
     }
     
     private DAOMemoryPersistence(){
-        mapCli = new HashMap<>();
-        mapProd = new HashMap<>();
-        mapPSale = new HashMap<>();
-        mapDeal = new HashMap<>();
     }
     
     public static DAOMemoryPersistence getInstance(){
