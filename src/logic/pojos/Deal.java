@@ -1,8 +1,7 @@
 package logic.pojos;
 
-public class Deal {
+public class Deal extends Pojo{
     
-    private long id;
     private Client comprador;
     private Client vendedor;
     private Product produto;
@@ -36,14 +35,6 @@ public class Deal {
 
     public void setProduto(Product produto) {
         this.produto = produto;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     @Override

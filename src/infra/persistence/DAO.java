@@ -14,7 +14,7 @@ import infra.exceptions.ObjectIdNotFoundException;
  */
 public interface DAO {
     
-    public int add(Object o, Class<?> type);
+    public void add(Object o, Class<?> type);
     public Object get(long id, Class<?> type) throws ObjectIdNotFoundException;
     public void update(long id, Class<?> type) throws ObjectIdNotFoundException;
     public void delet(long id, Class<?> type) throws ObjectIdNotFoundException;

@@ -6,6 +6,11 @@
 
 package GUI;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import logic.pojos.Client;
 import logic.pojos.Deal;
 import logic.pojos.Product;
@@ -18,8 +23,11 @@ import logic.pojos.PublicSale;
 public class GUITextLine implements GUIProcedures{
     
     private static GUITextLine gui;
+    private static BufferedReader inReader;
     
-    private GUITextLine(){}
+    private GUITextLine(){
+        inReader = new BufferedReader(new InputStreamReader(System.in));
+    }
     
     public static GUITextLine getInstance(){
         if(gui == null){
@@ -31,12 +39,74 @@ public class GUITextLine implements GUIProcedures{
 
     @Override
     public int displayMenu() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        while(true){
+            try{
+                System.out.print("Menu:\n"
+                        + "-Cadastrar:\n"
+                        + "----(0) Cliente\n"
+                        + "----(1) Produto\n"
+                        + "----(2) Leilão\n"
+                        + "----(3) Negócio\n"
+                        + "-Consultar:\n"
+                        + "----(4) Cliente\n"
+                        + "----(5) Produto\n"
+                        + "----(6) Leilão\n"
+                        + "----(7) Negócio\n"
+                        + "-Editar:\n"
+                        + "----(8 ) Cliente\n"
+                        + "----(9 ) Produto\n"
+                        + "----(10) Leilão\n"
+                        + "----(11) Negócio\n"
+                        + "-Apagar:\n"
+                        + "----(12) Cliente\n"
+                        + "----(13) Produto\n"
+                        + "----(14) Leilão\n"
+                        + "----(15) Negócio\n"
+                        + "-Sair:\n"
+                        + "----(16)\n"
+                        + "======================\n"
+                        + "Digite a opção:");
+                int op = Integer.valueOf(inReader.readLine());
+                if(op >= 0 && op <= 16){
+                    return op;
+                }else{
+                    throw new NumberFormatException();
+                }
 
+            }catch(NumberFormatException e){
+                    operationFailedGUI("Opção inválida.");
+            } catch (IOException ex) {
+                Logger.getLogger(GUITextLine.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+    
     @Override
     public Client clientRegisteringGUI() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String nome = "";
+        String cpf = "";
+        System.out.println("== CADSATRO DE CLIENTE ==\n");
+        while(true){
+            try {
+                System.out.print("Nome:");
+                nome = inReader.readLine();
+                //Valida nome
+                break;
+            } catch (IOException ex) {
+                Logger.getLogger(GUITextLine.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        while(true){
+            try {
+                System.out.print("CPF:");
+                cpf = inReader.readLine();
+                //Valida cpf
+                break;
+            } catch (IOException ex) {
+                Logger.getLogger(GUITextLine.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return new Client(nome, cpf);
     }
 
     @Override
@@ -61,7 +131,15 @@ public class GUITextLine implements GUIProcedures{
 
     @Override
     public void clientViewingGUI(Client c) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.print("Cliente Id(" + c.getId() + "):\n"
+                + "----Nome: " + c.getNome() + "\n"
+                + "----CPF: " + c.getCpf() + "\n"
+                + "Tecle ENTER para continuar...");
+        try {
+            inReader.readLine();
+        } catch (IOException ex) {
+            Logger.getLogger(GUITextLine.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
@@ -100,32 +178,32 @@ public class GUITextLine implements GUIProcedures{
     }
 
     @Override
-    public void clientDeletingGUI(Client c) {
+    public boolean clientDeletingGUI(Client c) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void productDeletingGUI(Product p) {
+    public boolean productDeletingGUI(Product p) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void pSaleDeletingGUI(PublicSale ps) {
+    public boolean pSaleDeletingGUI(PublicSale ps) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void dealDeletingGUI(Deal d) {
+    public boolean dealDeletingGUI(Deal d) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void operationSucessGUI() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("Operação realizada com sucesso.");
     }
 
     @Override
     public void operationFailedGUI(String erro) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("!Erro: " + erro);
     }
 }

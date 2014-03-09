@@ -1,8 +1,7 @@
 package logic.pojos;
 
-public class Product {
+public class Product extends Pojo{
     
-    private long id;
     private String nome;
     private String descricao;
     private double preco_init;
@@ -60,14 +59,6 @@ public class Product {
 
     public void setAno(int ano) {
         this.ano = ano;
-    }
-    
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     @Override

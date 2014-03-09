@@ -2,9 +2,8 @@ package logic.pojos;
 
 import java.util.Calendar;
 
-public class PublicSale {
+public class PublicSale extends Pojo{
     
-    private long id;
     private Product  produto;
     private Calendar data_int;
     private Calendar data_fim;
@@ -41,14 +40,6 @@ public class PublicSale {
 
     public void setData_fim(Calendar data_fim) {
         this.data_fim = data_fim;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     @Override

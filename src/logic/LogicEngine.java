@@ -17,11 +17,11 @@ import logic.pojos.*;
  *
  * @author carlosmagno
  */
-public class LogicFacade {
+public class LogicEngine {
     
     private static GUIProcedures gui;
     private static DAO dao;
-    private static LogicFacade logic;
+    private static LogicEngine logic;
     
     // PROCEDURES ID's
     final int CLIENT_REGISTERING = 0,
@@ -42,19 +42,19 @@ public class LogicFacade {
             DEAL_DELETE = 15,
             EXIT= 16;
     
-    public static LogicFacade getInstance(){
+    public static LogicEngine getInstance(){
         if(logic == null){
             gui = GUIFactory.getInstance();
             dao = DAOFactory.getInstance();
-            logic = new LogicFacade(gui, dao);
+            logic = new LogicEngine(gui, dao);
             return logic;
         }
         return logic;
     }
     
-    private LogicFacade(GUIProcedures gui, DAO dao){
-        LogicFacade.gui = gui;
-        LogicFacade.dao = dao;
+    private LogicEngine(GUIProcedures gui, DAO dao){
+        LogicEngine.gui = gui;
+        LogicEngine.dao = dao;
     }
     
     private void callProcedures(int type){
@@ -63,6 +63,7 @@ public class LogicFacade {
                 Client c = gui.clientRegisteringGUI();
                 dao.add(c, Client.class);
                 gui.operationSucessGUI();
+                gui.clientViewingGUI(c);
                 break;
             case 1:
                 Product p = gui.productRegisteringGUI();
@@ -138,5 +139,10 @@ public class LogicFacade {
         while(true){
             callProcedures(gui.displayMenu());
         }
+    }
+    
+    public static void main(String args[]){
+        LogicEngine logicEngine = LogicEngine.getInstance();
+        logicEngine.mainLoop();
     }
 }

@@ -15,8 +15,8 @@
             <file>file:/media/MyFiles/Dropbox/GoogleDrive/Disciplinas/MPS/VirtualPublicSale/src/logic/pojos/PublicSale.java</file>
             <file>file:/media/MyFiles/Dropbox/GoogleDrive/Disciplinas/MPS/VirtualPublicSale/src/GUI/GUITextLine.java</file>
             <file>file:/media/MyFiles/Dropbox/GoogleDrive/Disciplinas/MPS/VirtualPublicSale/src/GUI/GUIProcedures.java</file>
-            <file>file:/media/MyFiles/Dropbox/GoogleDrive/Disciplinas/MPS/VirtualPublicSale/src/infra/Exception/ObjectIdNotFoundException.java</file>
             <file>file:/media/MyFiles/Dropbox/GoogleDrive/Disciplinas/MPS/VirtualPublicSale/src/logic/pojos/Client.java</file>
+            <file>file:/media/MyFiles/Dropbox/GoogleDrive/Disciplinas/MPS/VirtualPublicSale/src/infra/exceptions/ObjectIdNotFoundException.java</file>
         </group>
     </open-files>
 </project-private>

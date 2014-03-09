@@ -6,7 +6,6 @@
 
 package infra.persistence;
 
-import GUI.GUIGraphicalPopupWindow;
 import infra.exceptions.ObjectIdNotFoundException;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -48,7 +47,7 @@ public class DAOFilePersistence implements DAO{
     }
 
     @Override
-    public int add(Object o, Class<?> type) {
+    public void add(Object o, Class<?> type) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

@@ -7,13 +7,6 @@
 package infra.persistence;
 
 import infra.exceptions.ObjectIdNotFoundException;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import logic.pojos.*;
@@ -26,8 +19,8 @@ public class DAOMemoryPersistence implements DAO{
     
     private static DAOMemoryPersistence dao;
     private static long lastId;
-    private static Map mapCli, mapProd, mapPSale, mapDeal;
-    private static final Map mapType = new HashMap<Class<?>, HashMap<Long, Object>>();
+    private static HashMap<Long, Pojo> mapCli, mapProd, mapPSale, mapDeal;
+    private static Map<Class<?>, HashMap<Long, Pojo>> mapType = new HashMap<>();
     static{
         mapType.put(Client.class, mapCli);
         mapType.put(Product.class, mapProd);
@@ -36,10 +29,10 @@ public class DAOMemoryPersistence implements DAO{
     }
     
     private DAOMemoryPersistence(){
-        mapCli = new HashMap<Long, Client>();
-        mapProd = new HashMap<Long, Product>();
-        mapPSale = new HashMap<Long, PublicSale>();
-        mapDeal = new HashMap<Long, Deal>();
+        mapCli = new HashMap<>();
+        mapProd = new HashMap<>();
+        mapPSale = new HashMap<>();
+        mapDeal = new HashMap<>();
     }
     
     public static DAOMemoryPersistence getInstance(){
@@ -51,14 +44,15 @@ public class DAOMemoryPersistence implements DAO{
     }
     
     @Override
-    public int add(Object o, Class<?> type) {
-        ((HashMap)mapType.get(type)).put(lastId++, (type.cast(o)));
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void add(Object o, Class<?> type) {
+        long id = lastId++;
+        ((Pojo)o).setId(id);
+        ((HashMap)mapType.get(type)).put(id , (type.cast(o)));
     }
 
     @Override
     public Object get(long id, Class<?> type) throws ObjectIdNotFoundException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return ((HashMap)mapType.get(type)).get(id);
     }
 
     @Override

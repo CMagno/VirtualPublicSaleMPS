@@ -6,6 +6,10 @@
 
 package GUI;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import logic.pojos.Client;
 import logic.pojos.Deal;
 import logic.pojos.Product;
@@ -28,10 +32,49 @@ public class GUIGraphicalPopupWindow implements GUIProcedures{
         }
         return gui;
     }
+    
+    
 
     @Override
     public int displayMenu() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        while(true){
+            try{
+                int op = Integer.valueOf(JOptionPane.showInputDialog(
+                        "Menu:\n"
+                        + "-Cadastrar:\n"
+                        + "----(0) Cliente\n"
+                        + "----(1) Produto\n"
+                        + "----(2) Leilão\n"
+                        + "----(3) Negócio\n"
+                        + "-Consultar:\n"
+                        + "----(4) Cliente\n"
+                        + "----(5) Produto\n"
+                        + "----(6) Leilão\n"
+                        + "----(7) Negócio\n"
+                        + "-Editar:\n"
+                        + "----(8 ) Cliente\n"
+                        + "----(9 ) Produto\n"
+                        + "----(10) Leilão\n"
+                        + "----(11) Negócio\n"
+                        + "-Apagar:\n"
+                        + "----(12) Cliente\n"
+                        + "----(13) Produto\n"
+                        + "----(14) Leilão\n"
+                        + "----(15) Negócio\n"
+                        + "-Sair:\n"
+                        + "----(16)\n"
+                        + "======================\n"
+                        + "Digite a opção:"));
+                if(op >= 0 && op <= 16){
+                    return op;
+                }else{
+                    throw new NumberFormatException();
+                }
+
+            }catch(NumberFormatException e){
+                    JOptionPane.showMessageDialog(null, "!!Opção inválida.");
+            }
+        }
     }
 
     @Override
@@ -100,22 +143,22 @@ public class GUIGraphicalPopupWindow implements GUIProcedures{
     }
 
     @Override
-    public void clientDeletingGUI(Client c) {
+    public boolean clientDeletingGUI(Client c) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void productDeletingGUI(Product p) {
+    public boolean productDeletingGUI(Product p) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void pSaleDeletingGUI(PublicSale ps) {
+    public boolean pSaleDeletingGUI(PublicSale ps) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void dealDeletingGUI(Deal d) {
+    public boolean dealDeletingGUI(Deal d) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

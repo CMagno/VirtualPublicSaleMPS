@@ -2,11 +2,10 @@ package logic.pojos;
 
 import java.util.Objects;
 
-public class Client {
+public class Client extends Pojo{
 
     private String nome;
     private String cpf;
-    private long id;
 
     public Client(String nome, String cpf) {
         this.nome = nome;
@@ -31,16 +30,7 @@ public class Client {
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
     
-
     @Override
     public String toString() {
         return "Cliente{" + "nome=" + nome + ", cpf=" + cpf + '}';
