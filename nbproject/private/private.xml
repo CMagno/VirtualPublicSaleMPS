@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/media/MyFiles/Dropbox/GoogleDrive/Disciplinas/MPS/VirtualPublicSale/src/infra/persistence/DAOFactory.java</file>
+            <file>file:/media/MyFiles/Dropbox/GoogleDrive/Disciplinas/MPS/VirtualPublicSale/src/logic/LogicFacade.java</file>
+            <file>file:/media/MyFiles/Dropbox/GoogleDrive/Disciplinas/MPS/VirtualPublicSale/src/infra/persistence/DAOMemoryPersistence.java</file>
+            <file>file:/media/MyFiles/Dropbox/GoogleDrive/Disciplinas/MPS/VirtualPublicSale/src/infra/persistence/DAO.java</file>
+            <file>file:/media/MyFiles/Dropbox/GoogleDrive/Disciplinas/MPS/VirtualPublicSale/src/logic/pojos/Product.java</file>
+            <file>file:/media/MyFiles/Dropbox/GoogleDrive/Disciplinas/MPS/VirtualPublicSale/src/infra/persistence/DAOFilePersistence.java</file>
+            <file>file:/media/MyFiles/Dropbox/GoogleDrive/Disciplinas/MPS/VirtualPublicSale/src/logic/pojos/Deal.java</file>
+            <file>file:/media/MyFiles/Dropbox/GoogleDrive/Disciplinas/MPS/VirtualPublicSale/src/GUI/GUIGraphicalPopupWindow.java</file>
+            <file>file:/media/MyFiles/Dropbox/GoogleDrive/Disciplinas/MPS/VirtualPublicSale/src/GUI/GUIFactory.java</file>
+            <file>file:/media/MyFiles/Dropbox/GoogleDrive/Disciplinas/MPS/VirtualPublicSale/src/logic/pojos/PublicSale.java</file>
+            <file>file:/media/MyFiles/Dropbox/GoogleDrive/Disciplinas/MPS/VirtualPublicSale/src/GUI/GUITextLine.java</file>
+            <file>file:/media/MyFiles/Dropbox/GoogleDrive/Disciplinas/MPS/VirtualPublicSale/src/GUI/GUIProcedures.java</file>
+            <file>file:/media/MyFiles/Dropbox/GoogleDrive/Disciplinas/MPS/VirtualPublicSale/src/infra/Exception/ObjectIdNotFoundException.java</file>
+            <file>file:/media/MyFiles/Dropbox/GoogleDrive/Disciplinas/MPS/VirtualPublicSale/src/logic/pojos/Client.java</file>
+        </group>
+    </open-files>
+</project-private>
