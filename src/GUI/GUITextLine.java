@@ -18,7 +18,8 @@ public class GUITextLine implements GUIProcedures{
     
     public static GUITextLine getInstance(){
         if(gui == null){
-            return new GUITextLine();
+            gui = new GUITextLine();
+            return gui;
         }
         return gui;
     }

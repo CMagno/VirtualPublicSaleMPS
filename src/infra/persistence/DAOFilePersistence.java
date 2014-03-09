@@ -7,7 +7,7 @@
 package infra.persistence;
 
 import GUI.GUIGraphicalPopupWindow;
-import infra.Exception.ObjectIdNotFoundException;
+import infra.exceptions.ObjectIdNotFoundException;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
@@ -41,7 +41,8 @@ public class DAOFilePersistence implements DAO{
     
     public static DAOFilePersistence getInstance(){
         if(dao == null){
-            return new DAOFilePersistence();
+            dao = new DAOFilePersistence();
+            return dao;
         }
         return dao;
     }

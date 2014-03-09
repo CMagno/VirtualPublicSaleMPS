@@ -6,7 +6,7 @@
 
 package infra.persistence;
 
-import infra.Exception.ObjectIdNotFoundException;
+import infra.exceptions.ObjectIdNotFoundException;
 
 /**
  *

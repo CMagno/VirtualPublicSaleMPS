@@ -6,7 +6,7 @@
 
 package infra.persistence;
 
-import infra.Exception.ObjectIdNotFoundException;
+import infra.exceptions.ObjectIdNotFoundException;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
@@ -44,7 +44,8 @@ public class DAOMemoryPersistence implements DAO{
     
     public static DAOMemoryPersistence getInstance(){
         if(dao == null){
-            return new DAOMemoryPersistence();
+            dao = new DAOMemoryPersistence();
+            return dao;
         }
         return dao;
     }

@@ -8,7 +8,7 @@ package logic;
 
 import GUI.GUIFactory;
 import GUI.GUIProcedures;
-import infra.Exception.ObjectIdNotFoundException;
+import infra.exceptions.ObjectIdNotFoundException;
 import infra.persistence.DAO;
 import infra.persistence.DAOFactory;
 import logic.pojos.*;
@@ -19,8 +19,9 @@ import logic.pojos.*;
  */
 public class LogicFacade {
     
-    private GUIProcedures gui;
-    private DAO dao;
+    private static GUIProcedures gui;
+    private static DAO dao;
+    private static LogicFacade logic;
     
     // PROCEDURES ID's
     final int CLIENT_REGISTERING = 0,
@@ -40,6 +41,21 @@ public class LogicFacade {
             PSALE_DELETE = 14,
             DEAL_DELETE = 15,
             EXIT= 16;
+    
+    public static LogicFacade getInstance(){
+        if(logic == null){
+            gui = GUIFactory.getInstance();
+            dao = DAOFactory.getInstance();
+            logic = new LogicFacade(gui, dao);
+            return logic;
+        }
+        return logic;
+    }
+    
+    private LogicFacade(GUIProcedures gui, DAO dao){
+        LogicFacade.gui = gui;
+        LogicFacade.dao = dao;
+    }
     
     private void callProcedures(int type){
         switch(type){
@@ -119,8 +135,6 @@ public class LogicFacade {
     }
     
     public void mainLoop(){
-        gui = GUIFactory.getInstance();
-        dao = DAOFactory.getInstance();
         while(true){
             callProcedures(gui.displayMenu());
         }

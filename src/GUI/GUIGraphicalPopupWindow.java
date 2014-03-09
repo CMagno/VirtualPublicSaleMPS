@@ -18,7 +18,8 @@ public class GUIGraphicalPopupWindow implements GUIProcedures{
     
     public static GUIGraphicalPopupWindow getInstance(){
         if(gui == null){
-            return new GUIGraphicalPopupWindow();
+            gui = new GUIGraphicalPopupWindow();
+            return gui;
         }
         return gui;
     }
