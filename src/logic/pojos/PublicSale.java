@@ -4,26 +4,26 @@ import java.util.Calendar;
 
 public class PublicSale extends Pojo{
     
-    private Product  produto;
+    private long  idProduto;
     private Calendar data_int;
     private Calendar data_fim;
 
-    public PublicSale(Product produto, Calendar data_int, Calendar data_fim) {
-        this.produto = produto;
+    public PublicSale(long produto, Calendar data_int, Calendar data_fim) {
+        this.idProduto = produto;
         this.data_int = data_int;
         this.data_fim = data_fim;
     }
     
     public PublicSale(){
-        this(new Product(),Calendar.getInstance(),Calendar.getInstance());
+        this(0,Calendar.getInstance(),Calendar.getInstance());
     }
 
-    public Product getProduto() {
-        return produto;
+    public long getProduto() {
+        return idProduto;
     }
 
-    public void setProduto(Product produto) {
-        this.produto = produto;
+    public void setProduto(long produto) {
+        this.idProduto = produto;
     }
 
     public Calendar getData_int() {
@@ -44,7 +44,9 @@ public class PublicSale extends Pojo{
 
     @Override
     public String toString() {
-        return "Leilao{" + "produto=" + produto.toString() + ", data_int=" + data_int + ", data_fim=" + data_fim + '}';
+        return "Produto: " + idProduto + 
+               "\nData Inicial: " + data_int + 
+               "\nData Final: " + data_fim;
     }
     
     

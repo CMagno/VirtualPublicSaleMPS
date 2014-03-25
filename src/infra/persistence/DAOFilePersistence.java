@@ -22,7 +22,7 @@ import logic.pojos.*;
  *
  * @author carlosmagno
  */
-public class DAOFilePersistence implements DAO{
+public class DAOFilePersistence implements DAOTemplate{
     
     private final static String ID_REFERENCE_FILE;
     private final static Map<Class<?>, String> fileNameMap = new HashMap<Class<?>, String>();

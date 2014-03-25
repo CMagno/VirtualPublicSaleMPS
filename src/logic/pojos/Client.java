@@ -33,7 +33,7 @@ public class Client extends Pojo{
     
     @Override
     public String toString() {
-        return "Cliente{" + "nome=" + nome + ", cpf=" + cpf + '}';
+        return "Id: " + id + "\nNome: " + nome + "\nCPF: " + cpf;
     }
 
     @Override

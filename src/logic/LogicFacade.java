@@ -6,10 +6,10 @@
 
 package logic;
 
+import GUI.GUIAbsTemplate;
 import GUI.GUIFactory;
-import GUI.GUIProcedures;
 import infra.exceptions.ObjectIdNotFoundException;
-import infra.persistence.DAO;
+import infra.persistence.DAOTemplate;
 import infra.persistence.DAOFactory;
 import logic.pojos.*;
 
@@ -17,11 +17,11 @@ import logic.pojos.*;
  *
  * @author carlosmagno
  */
-public class LogicEngine {
+public class LogicFacade {
     
-    private static GUIProcedures gui;
-    private static DAO dao;
-    private static LogicEngine logic;
+    private static GUIAbsTemplate gui;
+    private static DAOTemplate dao;
+    private static LogicFacade logic;
     
     // PROCEDURES ID's
     final int CLIENT_REGISTERING = 0,
@@ -42,48 +42,48 @@ public class LogicEngine {
             DEAL_DELETE = 15,
             EXIT= 16;
     
-    public static LogicEngine getInstance(){
+    public static LogicFacade getInstance(){
         if(logic == null){
             gui = GUIFactory.getInstance();
             dao = DAOFactory.getInstance();
-            logic = new LogicEngine(gui, dao);
+            logic = new LogicFacade(gui, dao);
             return logic;
         }
         return logic;
     }
     
-    private LogicEngine(GUIProcedures gui, DAO dao){
-        LogicEngine.gui = gui;
-        LogicEngine.dao = dao;
+    private LogicFacade(GUIAbsTemplate gui, DAOTemplate dao){
+        LogicFacade.gui = gui;
+        LogicFacade.dao = dao;
     }
     
     private void callProcedures(int type){
         switch(type){
             case 0:
-                Client c = gui.clientRegisteringGUI();
+                Client c = (Client)gui.registeringGUI(Client.class);
                 dao.add(c, Client.class);
                 gui.operationSucessGUI();
-                gui.clientViewingGUI(c);
+                gui.viewingGUI(Client.class,c);
                 break;
             case 1:
-                Product p = gui.productRegisteringGUI();
+                Product p = (Product)gui.registeringGUI(Product.class);
                 dao.add(p, Product.class);
                 gui.operationSucessGUI();
                 break;
             case 2:
-                PublicSale ps = gui.pSaleRegisteringGUI();
+                PublicSale ps = (PublicSale)gui.registeringGUI(PublicSale.class);
                 dao.add(ps, PublicSale.class);
                 gui.operationSucessGUI();
                 break;
             case 3:
-                Deal d = gui.dealRegisteringGUI();
+                Deal d = (Deal)gui.registeringGUI(Deal.class);
                 dao.add(d, Deal.class);
                 gui.operationSucessGUI();
                 break;
             case 4:
                 try {
                     Client cview = (Client)dao.get(gui.idRequestGUI(Client.class), Client.class);
-                    gui.clientViewingGUI(cview);
+                    gui.viewingGUI(Client.class, cview);
                 } catch (ObjectIdNotFoundException ex) {
                     gui.operationFailedGUI(ex.getMessage());
                 }
@@ -91,7 +91,7 @@ public class LogicEngine {
             case 5:
                 try {
                     Product pview = (Product)dao.get(gui.idRequestGUI(Product.class), Product.class);
-                    gui.productViewingGUI(pview);
+                    gui.viewingGUI(Product.class, pview);
                 } catch (ObjectIdNotFoundException ex) {
                     gui.operationFailedGUI(ex.getMessage());
                 }
@@ -99,7 +99,7 @@ public class LogicEngine {
             case 6:
                 try {
                     PublicSale psview = (PublicSale)dao.get(gui.idRequestGUI(PublicSale.class), PublicSale.class);
-                    gui.pSaleViewingGUI(psview);
+                    gui.viewingGUI(PublicSale.class, psview);
                 } catch (ObjectIdNotFoundException ex) {
                     gui.operationFailedGUI(ex.getMessage());
                 }
@@ -107,7 +107,7 @@ public class LogicEngine {
             case 7:
                 try {
                     Deal dview = (Deal)dao.get(gui.idRequestGUI(Deal.class), Deal.class);
-                    gui.dealViewingGUI(dview);
+                    gui.viewingGUI(PublicSale.class, dview);
                 } catch (ObjectIdNotFoundException ex) {
                     gui.operationFailedGUI(ex.getMessage());
                 }
@@ -142,7 +142,7 @@ public class LogicEngine {
     }
     
     public static void main(String args[]){
-        LogicEngine logicEngine = LogicEngine.getInstance();
+        LogicFacade logicEngine = LogicFacade.getInstance();
         logicEngine.mainLoop();
     }
 }

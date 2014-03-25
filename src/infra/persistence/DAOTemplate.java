@@ -12,7 +12,7 @@ import infra.exceptions.ObjectIdNotFoundException;
  *
  * @author carlosmagno
  */
-public interface DAO {
+public interface DAOTemplate {
     
     public void add(Object o, Class<?> type);
     public Object get(long id, Class<?> type) throws ObjectIdNotFoundException;

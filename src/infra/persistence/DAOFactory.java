@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
  */
 public class DAOFactory {
     
-    public static DAO getInstance(){
+    public static DAOTemplate getInstance(){
         switch(showPersistenceTypeAsk()){
             case 0:
                 return DAOFilePersistence.getInstance();

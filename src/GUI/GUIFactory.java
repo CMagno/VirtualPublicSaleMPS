@@ -14,12 +14,12 @@ import javax.swing.JOptionPane;
  */
 public class GUIFactory {
     
-    public static GUIProcedures getInstance(){
+    public static GUIAbsTemplate getInstance(){
         switch(showGUITypeAsk()){
             case 0:
-                return GUITextLine.getInstance();
+                return GUIAbsTemplate.getChainInstance(GUIImplCommandLine.getInstance());
             case 1:
-                return GUIGraphicalPopupWindow.getInstance();
+                return GUIAbsTemplate.getChainInstance(GUIImplGPopupWindow.getInstance());
             default:
                 return null;
         }

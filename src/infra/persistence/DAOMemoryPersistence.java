@@ -15,7 +15,7 @@ import logic.pojos.*;
  *
  * @author carlosmagno
  */
-public class DAOMemoryPersistence implements DAO{
+public class DAOMemoryPersistence implements DAOTemplate{
     
     private static DAOMemoryPersistence dao;
     private static long lastId;

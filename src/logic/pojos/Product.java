@@ -5,19 +5,17 @@ public class Product extends Pojo{
     private String nome;
     private String descricao;
     private double preco_init;
-    private double preco_compra;
     private int ano;
 
-    public Product(String nome, String descricao, double preco_init, double preco_compra, int ano) {
+    public Product(String nome, String descricao, double preco_init, int ano) {
         this.nome = nome;
         this.descricao = descricao;
         this.preco_init = preco_init;
-        this.preco_compra = preco_compra;
         this.ano = ano;
     }
     
     public Product(){
-        this("","",0D,0D,0);
+        this("","",0D,0);
     }
 
     
@@ -45,14 +43,6 @@ public class Product extends Pojo{
         this.preco_init = preco_init;
     }
 
-    public double getPreco_compra() {
-        return preco_compra;
-    }
-
-    public void setPreco_compra(double preco_compra) {
-        this.preco_compra = preco_compra;
-    }
-
     public int getAno() {
         return ano;
     }
@@ -63,7 +53,10 @@ public class Product extends Pojo{
 
     @Override
     public String toString() {
-        return "Produto{" + "nome=" + nome + ", descricao=" + descricao + ", preco_init=" + preco_init + ", preco_compra=" + preco_compra + ", ano=" + ano + '}';
+        return "Nome: " + nome
+             + "\nDescricao: " + descricao
+             + "\nPreço Inicial: " + preco_init
+             + "\nAno: " + ano;
     }
     
     
